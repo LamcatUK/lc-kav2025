@@ -1,0 +1,24 @@
+{
+  "key": "group_lc_portfolio_list",
+  "title": "LC Portfolio List",
+  "fields": [
+    {
+      "key": "field_lc_portfolio_list_title",
+      "label": "LC Portfolio List",
+      "name": "title",
+      "type": "message"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/lc-portfolio-list"
+      }
+    ]
+  ],
+  "active": 1,
+  "description": "",
+  "modified": 1762718834
+}

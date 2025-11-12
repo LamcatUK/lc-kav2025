@@ -1,0 +1,296 @@
+@font-face {
+  font-display: swap;
+  font-family: "Satoshi";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/Satoshi-Light.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+@font-face {
+  font-display: swap;
+  font-family: "Satoshi";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Satoshi-Regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+@font-face {
+  font-display: swap;
+  font-family: "Satoshi";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/Satoshi-Medium.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+@font-face {
+  font-display: swap;
+  font-family: "Satoshi";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Satoshi-Bold.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+@font-face {
+  font-display: swap;
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/dm-serif-display-v17-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+:root {
+  font-variant-ligatures: none;
+}
+
+/* =========================
+   TYPOGRAPHY
+   ========================= */
+
+/* Base */
+html {
+  font-size: 18px;
+} /* 16px */
+
+body {
+  font-family: var(--ff-body);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
+  letter-spacing: var(--ls-200);
+  color: var(--col-dark-grey);
+}
+
+/* ----------------------------------------------------------
+   Text classes (use these directly)
+---------------------------------------------------------- */
+
+/* Headings */
+.text-h1 {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-900);
+  line-height: var(--lh-900);
+  letter-spacing: var(--ls-900);
+  color: var(--col-black);
+}
+
+.text-h2 {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-600);
+  line-height: var(--lh-600);
+  letter-spacing: var(--ls-600);
+  color: var(--col-black);
+}
+
+.text-h3 {
+  font-family: var(--ff-body);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-500);
+  line-height: var(--lh-500);
+  letter-spacing: var(--ls-500);
+  color: var(--col-black);
+}
+
+/* Body text */
+.text-body {
+  font-family: var(--ff-body);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
+  letter-spacing: var(--ls-200);
+  color: var(--col-dark-grey);
+}
+
+.text-small {
+  font-family: var(--ff-body);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-100);
+  line-height: var(--lh-100);
+  letter-spacing: var(--ls-100);
+  color: var(--col-dark-grey);
+}
+
+/* Buttons */
+.text-button {
+  font-family: var(--ff-body);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-200);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--col-white);
+}
+
+/* Navigation */
+.text-nav {
+  font-family: var(--ff-body);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-200);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  color: var(--col-black);
+}
+
+.text-nav-active {
+  font-family: var(--ff-body);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-200);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  color: var(--col-accent);
+}
+
+/* Footer / colophon */
+.text-footer {
+  font-family: var(--ff-body);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-100);
+  line-height: var(--lh-100);
+  letter-spacing: var(--ls-100);
+  color: var(--col-mid-grey);
+}
+
+/* Links */
+a {
+  color: var(--col-accent-400);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--col-accent-400-hover);
+  text-decoration: underline;
+}
+a:focus-visible {
+  outline: 2px solid var(--col-accent-400);
+  outline-offset: 2px;
+}
+
+/* Media rhythm */
+p,
+ul,
+ol,
+blockquote,
+figure {
+  margin-block: 0.75em;
+}
+
+.w-constrained-md {
+  max-width: 72ch;
+  text-wrap: balance;
+}
+.w-constrained-lg {
+  max-width: 106ch;
+  text-wrap: balance;
+}
+
+/* ----------------------------------------------------------
+   Font size helpers
+---------------------------------------------------------- */
+.fs-100 {
+  font-size: var(--fs-100);
+}
+.fs-200 {
+  font-size: var(--fs-200);
+}
+.fs-300 {
+  font-size: var(--fs-300);
+}
+.fs-400 {
+  font-size: var(--fs-400);
+}
+.fs-500 {
+  font-size: var(--fs-500);
+}
+.fs-600 {
+  font-size: var(--fs-600);
+}
+.fs-700 {
+  font-size: var(--fs-700);
+}
+.fs-800 {
+  font-size: var(--fs-800);
+}
+.fs-900 {
+  font-size: var(--fs-900);
+}
+
+/* ----------------------------------------------------------
+   Font weight helpers
+---------------------------------------------------------- */
+.fw-light {
+  font-weight: var(--fw-light);
+}
+.fw-regular {
+  font-weight: var(--fw-regular);
+}
+.fw-medium {
+  font-weight: var(--fw-medium);
+}
+.fw-bold {
+  font-weight: var(--fw-bold);
+}
+
+/* ----------------------------------------------------------
+   Optional: line-height + letter-spacing helpers
+---------------------------------------------------------- */
+.lh-100 {
+  line-height: var(--lh-100);
+}
+.lh-200 {
+  line-height: var(--lh-200);
+}
+.lh-300 {
+  line-height: var(--lh-300);
+}
+.lh-400 {
+  line-height: var(--lh-400);
+}
+.lh-500 {
+  line-height: var(--lh-500);
+}
+.lh-600 {
+  line-height: var(--lh-600);
+}
+.lh-700 {
+  line-height: var(--lh-700);
+}
+.lh-800 {
+  line-height: var(--lh-800);
+}
+.lh-900 {
+  line-height: var(--lh-900);
+}
+
+.ls-100 {
+  letter-spacing: var(--ls-100);
+}
+.ls-200 {
+  letter-spacing: var(--ls-200);
+}
+.ls-300 {
+  letter-spacing: var(--ls-300);
+}
+.ls-400 {
+  letter-spacing: var(--ls-400);
+}
+.ls-500 {
+  letter-spacing: var(--ls-500);
+}
+.ls-600 {
+  letter-spacing: var(--ls-600);
+}
+.ls-700 {
+  letter-spacing: var(--ls-700);
+}
+.ls-800 {
+  letter-spacing: var(--ls-800);
+}
+.ls-900 {
+  letter-spacing: var(--ls-900);
+}
+
+/* ----------------------------------------------------------
+   Font family helpers
+---------------------------------------------------------- */
+.ff-heading {
+  font-family: var(--ff-heading);
+}
+.ff-body {
+  font-family: var(--ff-body);
+}

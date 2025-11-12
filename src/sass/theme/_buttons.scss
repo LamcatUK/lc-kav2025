@@ -1,0 +1,59 @@
+.btn-rr {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 3.5rem;
+  background-color: var(--col-white);
+  color: var(--col-black);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: var(--fw-regular);
+  font-size: 0.8125rem;
+  border: 1px solid var(--col-black);
+  border-radius: 100px;
+  overflow: hidden;
+  transition:
+    color 0.4s ease,
+    background-color 0.4s ease,
+    border-color 0.4s ease;
+
+  span {
+    display: inline-block;
+    transition: transform 0.4s ease;
+  }
+
+  // Arrow icon
+  &::after {
+    content: "";
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23fff' d='M13 9V7h3v2h-3zM7.03233022 1l1.43859292 1.43076034-4.58011387 4.55637467H10v2.02471813H3.89080927l4.58011387 4.55637466L7.03233022 15 0 8l.71777145-.71538017.71878813-.71639202L7.03233022 1z' transform='matrix(-1 0 0 1 16 0)'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  &:hover {
+    color: var(--col-white);
+    background-color: var(--col-accent);
+    border-color: var(--col-accent);
+    text-decoration: none;
+
+    span {
+      transform: translateX(-1rem);
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}

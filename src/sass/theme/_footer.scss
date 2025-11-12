@@ -1,0 +1,51 @@
+.footer {
+  --fa-li-margin: 1.5rem;
+
+  background-color: var(--col-black);
+  color: var(--col-white);
+
+  font-size: var(--fs-100);
+
+  &__menu {
+    list-style: none;
+    padding-inline-start: 0;
+    margin-block: 0;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: var(--fs-100);
+    color: var(--col-white);
+    transition: color var(--transition);
+    text-transform: uppercase;
+    &:hover {
+      color: var(--col-accent);
+    }
+  }
+
+  .social-icons {
+    a {
+      color: var(--col-accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color var(--transition);
+      &:hover {
+        color: var(--col-white);
+      }
+    }
+  }
+  .colophon {
+    border-block-start: 1px solid hsl(var(--hsl-white) / 0.4);
+    padding-block-start: 0.5rem;
+    font-size: var(--fs-tiny);
+    font-weight: var(--fw-meta);
+    a {
+      text-decoration: none;
+      text-transform: initial;
+      transition: color var(--transition);
+      &:hover {
+        color: var(--col-accent);
+      }
+    }
+  }
+}

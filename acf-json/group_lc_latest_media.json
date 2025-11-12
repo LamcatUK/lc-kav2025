@@ -1,0 +1,24 @@
+{
+  "key": "group_lc_latest_media",
+  "title": "LC Latest Media",
+  "fields": [
+    {
+      "key": "field_lc_latest_media_title",
+      "label": "LC Latest Media",
+      "name": "title",
+      "type": "message"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/lc-latest-media"
+      }
+    ]
+  ],
+  "active": 1,
+  "description": "",
+  "modified": 1762720029
+}

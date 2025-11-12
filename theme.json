@@ -1,0 +1,118 @@
+{
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "color": {
+      "palette": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "color": "hsl(60 4% 5%)"
+        },
+        {
+          "name": "Dark Grey",
+          "slug": "dark-grey",
+          "color": "hsl(0 0% 20%)"
+        },
+        {
+          "name": "Mid Grey",
+          "slug": "mid-grey",
+          "color": "hsl(230 8% 78%)"
+        },
+        {
+          "name": "Light Grey",
+          "slug": "light-grey",
+          "color": "hsl(0 0% 98%)"
+        },
+        {
+          "name": "White",
+          "slug": "white",
+          "color": "hsl(0 0% 100%)"
+        },
+        {
+          "name": "Accent",
+          "slug": "accent",
+          "color": "hsl(195 82% 56%)"
+        }
+      ],
+      "custom": false,
+      "defaultPalette": false
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "slug": "heading",
+          "name": "Heading",
+          "fontFamily": "\"DM Serif Display\", Georgia, \"Times New Roman\", serif"
+        },
+        {
+          "slug": "body",
+          "name": "Body",
+          "fontFamily": "\"Satoshi\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        }
+      ],
+      "fontSizes": [
+        {
+          "name": "100",
+          "slug": "100",
+          "size": "clamp(0.8125rem, 0.75rem + 0.2vw, 0.875rem)"
+        },
+        {
+          "name": "200",
+          "slug": "200",
+          "size": "clamp(0.9375rem, 0.85rem + 0.3vw, 1rem)"
+        },
+        {
+          "name": "300",
+          "slug": "300",
+          "size": "clamp(1.0625rem, 0.95rem + 0.4vw, 1.125rem)"
+        },
+        {
+          "name": "400",
+          "slug": "400",
+          "size": "clamp(1.375rem, 1.2rem + 0.8vw, 1.5rem)"
+        },
+        {
+          "name": "500",
+          "slug": "500",
+          "size": "clamp(1.75rem, 1.5rem + 1.2vw, 2rem)"
+        },
+        {
+          "name": "600",
+          "slug": "600",
+          "size": "clamp(2.25rem, 1.9rem + 1.8vw, 3rem)"
+        },
+        {
+          "name": "700",
+          "slug": "700",
+          "size": "clamp(2.625rem, 2.1rem + 2.2vw, 3.5rem)"
+        },
+        {
+          "name": "800",
+          "slug": "800",
+          "size": "clamp(3rem, 2.4rem + 2.8vw, 4rem)"
+        },
+        {
+          "name": "900",
+          "slug": "900",
+          "size": "clamp(3.5rem, 2.8rem + 3.5vw, 5rem)"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "var(--ff-body)",
+      "lineHeight": "var(--lh-100)"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--ff-heading)",
+          "fontWeight": "600",
+          "lineHeight": "var(--lh-600)"
+        }
+      }
+    }
+  }
+}

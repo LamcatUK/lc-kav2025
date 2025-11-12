@@ -1,0 +1,152 @@
+header {
+  background-color: var(--col-white);
+  border-bottom: 1px solid var(--col-mid-grey);
+  height: var(--h-top);
+
+  @media (min-width: 992px) {
+    height: var(--h-top-desktop);
+    transition: var(--transition);
+  }
+
+  &.mobile-menu-open {
+    background-color: var(--col-white);
+  }
+
+  .navbar-toggler {
+    i {
+      color: var(--col-accent-400);
+    }
+  }
+
+  .navbar-nav {
+    margin-block: 0;
+    column-gap: 2rem;
+  }
+
+  // Apply text-nav styles to navigation links
+  a.nav-link {
+    font-family: var(--ff-body);
+    font-weight: var(--fw-light);
+    font-size: var(--fs-100);
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    color: var(--col-balck);
+
+    transition: var(--transition);
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0;
+    position: relative;
+
+    // Animated underline
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--col-accent);
+      transition: width var(--transition);
+    }
+
+    @media (min-width: 992px) {
+      &:hover {
+        color: var(--col-accent-400);
+        text-decoration: none;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    &:focus {
+      color: var(--col-accent-400);
+      text-decoration: none;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  // Current/active menu items get text-nav-active styles
+  .current_page_item > .nav-link,
+  .current_page_parent > .nav-link,
+  .dropdown.current-page-ancestor > .nav-link,
+  .dropdown.current-menu-item > .nav-link {
+    font-weight: var(--fw-bold);
+    color: var(--col-accent-400);
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  .logo-container {
+    margin-right: 1rem;
+    max-width: 240px;
+
+    @media (min-width: 1400px) {
+      max-width: 300px;
+    }
+  }
+
+  .logo {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    max-width: 100%;
+    padding-block: 0;
+
+    background-image: url(../img/kav-logo--nostrap.svg);
+    aspect-ratio: 80.21 / 37.73;
+    width: 80px;
+    height: 38px;
+
+    @media (min-width: 1400px) {
+      background-image: url(../img/kav-logo--full.svg);
+      aspect-ratio: 80.21 / 51.29;
+      width: 80px;
+      height: 52px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .navbar-collapse {
+      background: var(--col-neutral-900);
+      min-height: 100svh;
+      /* Disable Bootstrap collapse animation */
+      transition: none !important;
+      /* Do not set display:flex or height, let Bootstrap animate */
+    }
+
+    /* Disable all collapse transitions on mobile */
+    .collapsing {
+      transition: none !important;
+      height: auto !important;
+    }
+
+    .navbar-nav {
+      width: 100%;
+      padding-bottom: 2rem;
+    }
+
+    .nav-link,
+    .navbar-nav .nav-link {
+      font-size: var(--fs-subtle);
+      padding: 1rem 0;
+    }
+
+    .dropdown-item {
+      font-size: var(--fs-body);
+    }
+
+    .fs-subtle a {
+      font-size: var(--fs-subtle);
+    }
+  }
+}
