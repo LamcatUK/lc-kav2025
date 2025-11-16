@@ -241,3 +241,54 @@ document.addEventListener('DOMContentLoaded', function () {
         <?php
     }
 );
+
+
+/**
+ * Prevent the Posts page menu item from being marked current when viewing a single Company.
+ * Theme-specific behaviour — belongs in lc-theme.php rather than the shared utility file.
+ *
+ * @param array   $classes Array of CSS classes for the menu item.
+ * @param WP_Post $item    Menu item object.
+ * @return array Modified classes.
+ */
+function lc_remove_posts_menu_highlight_for_company( $classes, $item ) {
+    if ( ! is_singular( 'company' ) ) {
+        return $classes;
+    }
+
+    $posts_page_id  = (int) get_option( 'page_for_posts' );
+    $posts_page_url = $posts_page_id ? untrailingslashit( get_permalink( $posts_page_id ) ) : untrailingslashit( home_url( '/media' ) );
+
+    // Determine portfolio page (page created at /portfolio/) if present.
+    $portfolio_page = get_page_by_path( 'portfolio' );
+    $portfolio_id   = $portfolio_page ? (int) $portfolio_page->ID : 0;
+    $portfolio_url  = $portfolio_id ? untrailingslashit( get_permalink( $portfolio_id ) ) : untrailingslashit( home_url( '/portfolio' ) );
+
+    $item_url = $item->url ? untrailingslashit( $item->url ) : '';
+
+    // Remove 'current' classes from the Posts page menu item (Media) when viewing a company.
+    if ( $item_url && ( ( $posts_page_id && (int) $item->object_id === $posts_page_id ) || $item_url === $posts_page_url ) ) {
+        $classes = array_diff(
+            $classes,
+            array(
+                'current-menu-item',
+                'current_page_item',
+                'current-menu-ancestor',
+                'current-menu-parent',
+                'current_page_parent',
+                'current_page_ancestor',
+            )
+        );
+    }
+
+    // Add 'current' classes to the Portfolio menu item so it appears active for company singles.
+    if ( $item_url && ( ( $portfolio_id && (int) $item->object_id === $portfolio_id ) || $item_url === $portfolio_url ) ) {
+        $classes[] = 'current-menu-item';
+        $classes[] = 'current_page_parent';
+        $classes   = array_unique( $classes );
+    }
+
+    return $classes;
+}
+add_filter( 'nav_menu_css_class', 'lc_remove_posts_menu_highlight_for_company', 10, 2 );
+

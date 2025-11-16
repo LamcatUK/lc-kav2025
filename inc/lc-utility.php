@@ -273,29 +273,12 @@ function get_the_top_ancestor_id() {
 }
 
 /**
- * Encodes a string into JSON format with additional escaping for special characters.
- *
- * This function replaces specific characters in the input string with their escaped equivalents
- * before encoding it into JSON format.
- *
- * @param string $input_string The input string to encode.
- * @return string The JSON-encoded string with additional escaping.
- */
-function cb_json_encode( $content ) {
-    $escapers     = array( '\\', '/', '"', "\n", "\r", "\t", "\x08", "\x0c" );
-    $replacements = array( '\\\\', '\\/', '\\"', "\\n", "\\r", "\\t", "\\f", "\\b" );
-    $result       = str_replace( $escapers, $replacements, $content );
-    $result       = wp_json_encode( $result );
-    return $result;
-}
-
-/**
  * Convert time string to ISO 8601 duration format.
  *
  * @param string $time_string The time string to convert.
  * @return string The ISO 8601 duration format.
  */
-function cb_time_to_8601( $time_string ) {
+function lc_time_to_8601( $time_string ) {
     $time   = explode( ':', $time_string );
     $output = 'PT' . $time[0] . 'H' . $time[1] . 'M' . $time[2] . 'S';
     return $output;
@@ -595,6 +578,11 @@ add_shortcode( 'page_list', 'register_page_list_shortcode' );
  * @return int The modified excerpt length.
  */
 function custom_excerpt_length( $length ) {
+    // Intentionally ignore the incoming $length value but keep the
+    // parameter in the signature because WordPress passes it to the filter.
+    // Unset it to explicitly mark it as unused and silence static analysis.
+    unset( $length );
+
     return 25; // Set to your desired number of words.
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length' );
@@ -674,9 +662,12 @@ function get_gutenberg_h2_headings_from_page() {
 /**
  * Disable Contact Form 7 autop (no <p>/<br> wrapping).
  */
-add_filter( 'wpcf7_autop_or_not', function () {
-    return false;
-} );
+add_filter(
+    'wpcf7_autop_or_not',
+    function () {
+        return false;
+    }
+);
 
 /**
  * Disables TinyMCE cleanup to prevent stripping of JavaScript.

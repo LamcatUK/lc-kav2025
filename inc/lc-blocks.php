@@ -19,6 +19,45 @@ function acf_blocks() {
 
         acf_register_block_type(
             array(
+                'name'            => 'lc_page_hero',
+                'title'           => __( 'LC Page Hero' ),
+                'category'        => 'layout',
+                'icon'            => 'cover-image',
+                'render_template' => 'blocks/lc-page-hero.php',
+                'mode'            => 'edit',
+                'supports'        => array(
+                    'mode'      => false,
+                    'anchor'    => true,
+                    'className' => true,
+                    'align'     => true,
+                ),
+            )
+        );
+
+        acf_register_block_type(
+            array(
+                'name'            => 'lc_content_grid',
+                'title'           => __( 'LC Content Grid' ),
+                'category'        => 'layout',
+                'icon'            => 'cover-image',
+                'render_template' => 'blocks/lc-content-grid.php',
+                'mode'            => 'edit',
+                'supports'        => array(
+                    'mode'      => false,
+                    'anchor'    => true,
+                    'className' => true,
+                    'align'     => true,
+                    'color'     => array(
+                        'text'       => true,
+                        'background' => true,
+                        'gradients'  => false,
+                    ),
+                ),
+            )
+        );
+
+        acf_register_block_type(
+            array(
                 'name'            => 'lc_feed_container',
                 'title'           => __( 'LC Feed Container' ),
                 'category'        => 'layout',
@@ -175,10 +214,12 @@ add_action( 'acf/init', 'acf_blocks' );
 
 // Auto-sync ACF field groups from acf-json folder.
 add_filter(
-	'acf/settings/save_json',
-	function ( $path ) {
-		return get_stylesheet_directory() . '/acf-json';
-	}
+    'acf/settings/save_json',
+    function () {
+        // Always write ACF JSON to the theme's acf-json directory so field groups
+        // are versioned with the theme and predictable across environments.
+        return get_stylesheet_directory() . '/acf-json';
+    }
 );
 
 add_filter(
@@ -219,7 +260,7 @@ add_filter( 'register_block_type_args', 'core_block_type_args', 10, 3 );
  * @return bool True if footer.php is being rendered, false otherwise.
  */
 function is_footer_rendering() {
-    $backtrace = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS );
+    $backtrace = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS ); // phpcs:ignore -- debug_backtrace used intentionally
     foreach ( $backtrace as $trace ) {
         if ( isset( $trace['file'] ) && basename( $trace['file'] ) === 'footer.php' ) {
             return true;

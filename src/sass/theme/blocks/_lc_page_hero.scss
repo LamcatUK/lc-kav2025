@@ -1,0 +1,125 @@
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(90deg, #3f3f3f, #ececec);
+    animation: gradientZoomRotate 20s ease-in-out infinite alternate;
+    z-index: -1;
+  }
+
+  &__lined-circle {
+    width: 300px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200%;
+      height: 200%;
+      background-image: url(../img/lined-circle.svg);
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      transform-origin: center;
+      animation: rotateCircle 120s linear infinite;
+    }
+  }
+
+  &__blue-dots {
+    width: 200px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.75;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 200%;
+      background-image: url(../img/blue-dot.svg);
+      background-size: auto 20px;
+      background-position: top right;
+      background-repeat: repeat;
+      animation: scrollDotsUp 30s linear infinite;
+    }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+  &__title {
+    font-family: var(--ff-body);
+    font-size: var(--fs-400);
+    font-weight: var(--fw-light);
+    line-height: var(--lh-400);
+    color: var(--col-white);
+  }
+  &__subtitle {
+    font-family: var(--ff-heading);
+    font-size: var(--fs-400);
+    color: var(--col-white);
+    text-align: end;
+  }
+}
+
+@keyframes gradientZoomRotate {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes rotateCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scrollDots {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scrollDotsUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
