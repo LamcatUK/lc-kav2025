@@ -24,6 +24,12 @@ defined( 'ABSPATH' ) || exit;
 					<?php
 				}
 				?>
+				<div data-aos="fade-up" data-aos-delay="200">
+					<a href="/portfolio/"
+						class="btn-rr">
+						<span>View Portfolio</span>
+					</a>
+				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="portfolio-list__grid">
