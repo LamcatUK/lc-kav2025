@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <section class="featured-in py-5">
 	<div class="container featured-in__marquee" data-aos="fade">
-		<h2 class="text-center fs-600 text-white mb-4">featured in</h2>
+		<h2 class="text-center fs-600 text-white mb-4">Featured In</h2>
 		<div class="featured-in__track">
 			<div class="swiper-wrapper">
 				<?php

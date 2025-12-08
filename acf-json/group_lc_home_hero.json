@@ -22,7 +22,7 @@
         },
         {
             "key": "field_6910e3c1dd0b7",
-            "label": "Hero Quote (h1)",
+            "label": "Hero Quote (h2)",
             "name": "hero_quote",
             "aria-label": "",
             "type": "textarea",

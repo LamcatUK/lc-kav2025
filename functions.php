@@ -8,7 +8,7 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-define( 'LC_THEME_DIR', WP_CONTENT_DIR . '/themes/lc-kav2025' );
+define( 'LC_THEME_DIR', get_stylesheet_directory() );
 
 require_once LC_THEME_DIR . '/inc/lc-theme.php';
 

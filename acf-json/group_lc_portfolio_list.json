@@ -42,11 +42,11 @@
             "append": ""
         },
         {
-            "key": "field_6919b54206e50",
-            "label": "Show teaser?",
-            "name": "show_teaser",
+            "key": "field_6937058632530",
+            "label": "Content",
+            "name": "content",
             "aria-label": "",
-            "type": "checkbox",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -55,17 +55,12 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "Yes": "Yes"
-            },
-            "default_value": [],
-            "return_format": "value",
-            "allow_custom": 0,
+            "default_value": "",
             "allow_in_bindings": 0,
-            "layout": "vertical",
-            "toggle": 0,
-            "save_custom": 0,
-            "custom_choice_button_text": "Add new choice"
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         }
     ],
     "location": [
@@ -87,5 +82,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763292496
+    "modified": 1765213733
 }

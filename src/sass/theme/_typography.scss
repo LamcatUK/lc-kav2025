@@ -56,6 +56,12 @@ body {
   color: var(--col-dark-grey);
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ff-heading);
+    font-weight: 400;
+    line-height: var(--lh-600);
+}
+
 /* ----------------------------------------------------------
    Text classes (use these directly)
 ---------------------------------------------------------- */

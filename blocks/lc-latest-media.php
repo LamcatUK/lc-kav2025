@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <section class="latest-media">
 	<div class="container py-5">
-		<h2 class="text-center fs-600 text-white mb-4" data-aos="fade">media</h2>
+		<h2 class="text-center fs-600 text-white mb-4" data-aos="fade">Media</h2>
 		<div class="row g-5">
 			<?php
 			$q = new WP_Query(

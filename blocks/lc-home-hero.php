@@ -14,12 +14,12 @@ defined( 'ABSPATH' ) || exit;
 	<div class="container pt-5">
 		<div class="row align-items-center">
 			<div class="col-lg-6">
-				<h1 class="home-hero__title mb-4" 
+				<h2 class="home-hero__title mb-4" 
 					data-typewriter="<?= esc_attr( get_field( 'hero_quote' ) ); ?>">
-				</h1>
-				<p class="home-hero__subtitle">
+				</h2>
+				<h1 class="home-hero__subtitle">
 					Kunal A. Vyas
-				</p>
+				</h1>
 			</div>
 			<div class="col-lg-6 home-hero__image-wrapper mt-5 mt-lg-0">
 				<?php
@@ -74,22 +74,29 @@ add_action(
 			gsap.set(subtitleElement, { opacity: 0 });
 		}
 		
-		// Calculate durations
-		var typewriterDuration = text.length * 0.05;
+		// Split text by periods and type each segment
+		var segments = text.split('.');
 		var typewriterDelay = 0.5;
 		
 		// Create timeline
 		var tl = gsap.timeline();
 		
-		// Typewriter animation
-		tl.to(typewriterElement, {
-			duration: typewriterDuration,
-			text: {
-				value: text,
-				delimiter: ''
-			},
-			ease: 'none',
-			delay: typewriterDelay
+		// Type each segment with pause after periods
+		var currentText = '';
+		segments.forEach(function(segment, index) {
+			if (segment.trim().length > 0) {
+				currentText += segment + (index < segments.length - 1 ? '.' : '');
+				
+				tl.to(typewriterElement, {
+					duration: (segment.length + 1) * 0.05,
+					text: {
+						value: currentText,
+						delimiter: ''
+					},
+					ease: 'none',
+					delay: index === 0 ? typewriterDelay : 0.3
+				});
+			}
 		});
 		
 		// Subtitle fade-in animation

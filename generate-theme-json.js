@@ -1,5 +1,19 @@
 // generate-theme-json.js
 // Node.js script to parse SCSS tokens and generate theme.json for WordPress theme
+//
+// Usage:
+//   npm run generate-theme-json
+//
+// This script reads CSS custom properties from src/sass/theme/_tokens.scss
+// and generates a theme.json file with color palette and font sizes for
+// the WordPress block editor.
+//
+// The script looks for:
+// - Color variables: --col-* (excluding -hsl variants)
+// - Font size variables: --fs-*
+//
+// Colors defined as hsl(var(--col-*-hsl)) are automatically resolved to their
+// actual HSL values.
 
 const fs = require("fs");
 const path = require("path");
@@ -22,10 +36,11 @@ function parseCssVariables(scssContent) {
 }
 
 // Map CSS variables to theme.json structure
+
 function buildThemeJson(tokens) {
-  // Helper to resolve hsl(var(--hsl-*)) to actual hsl value
+  // Helper to resolve hsl(var(--col-*-hsl)) to actual hsl value
   function resolveColorValue(value, key) {
-    const hslVarMatch = value.match(/^hsl\(var\(--([\w-]+)\)\)$/);
+    const hslVarMatch = value.match(/^hsl\(var\(--([\w-]+-hsl)\)\)$/);
     if (hslVarMatch) {
       const hslKey = hslVarMatch[1];
       if (tokens[hslKey]) {
@@ -35,76 +50,50 @@ function buildThemeJson(tokens) {
     return value;
   }
 
-  // Map color variables (starts with col-, but not alpha variants)
+  // Map color variables (starts with col-, but not -hsl)
   const colors = Object.entries(tokens)
-    .filter(([key]) => key.startsWith("col-") && !/-\d+$/.test(key))
-    .map(([key, value]) => {
-      const slug = key.replace("col-", "");
-      const name = slug
-        .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
-      return {
-        name: name,
-        slug: slug,
-        color: resolveColorValue(value, key),
-      };
-    });
+    .filter(([key]) => key.startsWith("col-") && !key.endsWith("-hsl"))
+    .map(([key, value]) => ({
+      name: key.replace("col-", ""),
+      slug: key.replace("col-", ""),
+      color: resolveColorValue(value, key),
+    }));
 
   // Map font size variables (starts with fs-)
+  // WordPress sanitizes slugs and adds hyphens between letters/numbers
+  // So we map h2 -> heading-2, h3 -> heading-3 etc to avoid has-h-2-font-size
+  const slugMap = {
+    h2: "heading-2",
+    h3: "heading-3",
+    h4: "heading-4",
+    h5: "heading-5",
+    h6: "heading-6",
+  };
+
   const fontSizes = Object.entries(tokens)
     .filter(([key]) => key.startsWith("fs-"))
     .map(([key, value]) => {
-      const slug = key.replace("fs-", "");
+      const baseName = key.replace("fs-", "");
+      const slug = slugMap[baseName] || baseName;
       return {
-        name: slug,
+        name: baseName,
         slug: slug,
         size: value,
       };
     });
-
-  // Extract font families
-  const fontFamilies = [
-    {
-      slug: "heading",
-      name: "Heading",
-      fontFamily: tokens["ff-heading"] || "serif",
-    },
-    {
-      slug: "body",
-      name: "Body",
-      fontFamily: tokens["ff-body"] || "sans-serif",
-    },
-  ].filter((f) => f.fontFamily);
 
   return {
     version: 2,
     settings: {
       appearanceTools: true,
       color: {
-        palette: colors,
-        custom: false,
         defaultPalette: false,
+        palette: colors.map((color) => ({
+          ...color,
+          origin: "theme",
+        })),
       },
-      typography: {
-        fontFamilies: fontFamilies,
-        fontSizes: fontSizes,
-      },
-    },
-    styles: {
-      typography: {
-        fontFamily: "var(--ff-body)",
-        lineHeight: "var(--lh-100)",
-      },
-      elements: {
-        heading: {
-          typography: {
-            fontFamily: "var(--ff-heading)",
-            fontWeight: "600",
-            lineHeight: "var(--lh-600)",
-          },
-        },
-      },
+      typography: { fontSizes: fontSizes },
     },
   };
 }
@@ -118,7 +107,7 @@ function main() {
   const tokens = parseCssVariables(scssContent);
   const themeJson = buildThemeJson(tokens);
   fs.writeFileSync(themeJsonFile, JSON.stringify(themeJson, null, 2));
-  console.log("theme.json generated successfully from SCSS tokens.");
+  console.log("theme.json generated successfully.");
 }
 
 main();
