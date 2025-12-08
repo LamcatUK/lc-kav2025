@@ -12,33 +12,18 @@ $page_for_posts = get_option( 'page_for_posts' );
 get_header();
 ?>
 <main id="main">
-	<section class="page-hero">
-		<?=
-		wp_get_attachment_image(
-			get_post_thumbnail_id( $page_for_posts ),
-			'full',
-			false,
-			array(
-				'class' => 'page-hero__image',
-			)
-		);
-		?>
-		<div class="page-hero__overlay"></div>
-		<div class="container">
-			<div class="row h-100 align-items-center">
-				<div class="col-md-8 col-lg-6 col-xl-4 page-hero__content">
-					<h1>News &amp; Insights</h1>
-					<p class="subtitle">Expert advice, industry updates, and company news.</p>
-					<a href="/request-survey/" class="btn btn--primary mb-4">Request a Survey</a>
-				</div>
-			</div>
-		</div>
-	</section>
-    <section class="latest_posts mt-5">
-        <div class="container pb-5">
-            <?php
+	<?php
+	$post = get_post($page_for_posts);
+
+	if ( $post ) {
+		$content = apply_filters('the_content', $post->post_content);
+		echo '<div class="mb-5">' . $content . '</div>';
+	}
+	?>
+	<section class="latest_posts mt-5">
+		<div class="container pb-5">
+			<?php
 			// phpcs:disable
-			/*
             // Get all categories for filter buttons.
             $all_categories = get_categories(
 				array(
@@ -66,23 +51,21 @@ get_header();
                 </div>
                 <?php
             }
-			*/
 			// phpcs:enable
-            ?>
-            <div class="row g-4 w-100">
-            <?php
-            // Custom query to include both published and scheduled posts.
-            $args = array(
-                'post_type'      => 'post',
-                'post_status'    => array( 'publish', 'future' ), // Include published and scheduled posts.
-                'orderby'        => 'date',
-                'order'          => 'DESC', // Descending order.
-                'posts_per_page' => -1,    // Get all posts.
-            );
+			?>
+			<div class="row g-4 w-100">
+			<?php
+			$args = array(
+				'post_type'      => 'post',
+				'post_status'    => array( 'publish' ),
+				'orderby'        => 'date',
+				'order'          => 'DESC', // Descending order.
+				'posts_per_page' => -1,    // Get all posts.
+			);
 
-            $q = new WP_Query( $args );
+			$q = new WP_Query( $args );
 
-            if ( $q->have_posts() ) {
+			if ( $q->have_posts() ) {
 				$d = 0;
 				while ( $q->have_posts() ) {
 					$q->the_post();
@@ -117,49 +100,47 @@ get_header();
 					</div>
 					<?php
 					$d += 100;
-                }
-            } else {
-                echo '<p>No posts found.</p>';
-            }
-
-            // Reset post data.
-            wp_reset_postdata();
-            ?>
-            </div>
-        </div>
-    </section>
+				}
+			} else {
+				echo '<p>No posts found.</p>';
+			}
+			wp_reset_postdata();
+			?>
+			</div>
+		</div>
+	</section>
 </main>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const posts = document.querySelectorAll('[data-category]');
+	const filterButtons = document.querySelectorAll('.filter-btn');
+	const posts = document.querySelectorAll('[data-category]');
 
-    // Add post-item class to all posts
-    posts.forEach(post => {
-        post.classList.add('post-item');
-    });
+	// Add post-item class to all posts
+	posts.forEach(post => {
+		post.classList.add('post-item');
+	});
 
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filterValue = this.getAttribute('data-filter');
-            
-            // Update active button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Filter posts
-            posts.forEach(post => {
-                const postCategories = post.getAttribute('data-category');
-                const shouldShow = filterValue === 'all' || (postCategories && postCategories.includes(filterValue));
-                
-                if (shouldShow) {
-                    post.style.display = 'block';
-                } else {
-                    post.style.display = 'none';
-                }
-            });
-        });
-    });
+	filterButtons.forEach(button => {
+		button.addEventListener('click', function() {
+			const filterValue = this.getAttribute('data-filter');
+			
+			// Update active button
+			filterButtons.forEach(btn => btn.classList.remove('active'));
+			this.classList.add('active');
+			
+			// Filter posts
+			posts.forEach(post => {
+				const postCategories = post.getAttribute('data-category');
+				const shouldShow = filterValue === 'all' || (postCategories && postCategories.includes(filterValue));
+				
+				if (shouldShow) {
+					post.style.display = 'block';
+				} else {
+					post.style.display = 'none';
+				}
+			});
+		});
+	});
 });
 </script>
 
