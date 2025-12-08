@@ -81,9 +81,9 @@ defined( 'ABSPATH' ) || exit;
 						<div class="latest-media__title">
 							<?php the_title(); ?>
 						</div>
-						<div class="latest-media__excerpt">
+						<!-- <div class="latest-media__excerpt">
 							<?php echo wp_kses_post( wp_trim_words( get_the_excerpt(), 18, '...' ) ); ?>
-						</div>
+						</div> -->
 					</div>
 				</a>	
 			</div>
