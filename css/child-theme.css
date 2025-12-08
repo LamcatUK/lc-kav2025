@@ -23071,9 +23071,6 @@ body {
   color: var(--col-accent-500);
 }
 
-.blog {
-  margin-top: var(--h-top);
-}
 .blog .post_hero {
   width: 100%;
   aspect-ratio: 16/9;
