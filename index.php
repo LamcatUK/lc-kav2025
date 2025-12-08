@@ -17,7 +17,7 @@ get_header();
 
 	if ( $post ) {
 		$content = apply_filters('the_content', $post->post_content);
-		echo '<div class="mb-5">' . $content . '</div>';
+		echo $content;
 	}
 	?>
 	<section class="latest_posts mt-5">
