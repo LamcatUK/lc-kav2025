@@ -1,0 +1,24 @@
+{
+  "key": "group_lc_portfolio_grid",
+  "title": "LC Portfolio Grid",
+  "fields": [
+    {
+      "key": "field_lc_portfolio_grid_title",
+      "label": "LC Portfolio Grid",
+      "name": "title",
+      "type": "message"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/lc-portfolio-grid"
+      }
+    ]
+  ],
+  "active": 1,
+  "description": "",
+  "modified": 1765216128
+}
