@@ -23017,6 +23017,10 @@ header .logo {
   animation: scrollDotsUp 30s linear infinite;
 }
 
+.portfolio-grid {
+  border-bottom: 1px solid var(--col-mid-grey);
+}
+
 .admin-bar header.fixed-top {
   top: 32px;
 }
