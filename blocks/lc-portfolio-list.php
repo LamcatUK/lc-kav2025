@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 				}
 				if ( get_field( 'content' ) ) {
 					?>
-				<div data-aos="fade" data-aos-delay="100"><?= wp_kses_post( get_field( 'content' ) ); ?></div>
+				<div class="mb-4" data-aos="fade" data-aos-delay="100"><?= wp_kses_post( get_field( 'content' ) ); ?></div>
 					<?php
 				}
 				?>
