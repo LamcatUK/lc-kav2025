@@ -20,11 +20,11 @@ defined( 'ABSPATH' ) || exit;
 				}
 				if ( get_field( 'content' ) ) {
 					?>
-				<div data-aos="fade"><?= wp_kses_post( get_field( 'content' ) ); ?></div>
+				<div data-aos="fade" data-aos-delay="100"><?= wp_kses_post( get_field( 'content' ) ); ?></div>
 					<?php
 				}
 				?>
-				<div data-aos="fade-up" data-aos-delay="200">
+				<div data-aos="fade" data-aos-delay="200">
 					<a href="/portfolio/"
 						class="btn-rr">
 						<span>View Portfolio</span>
