@@ -94,7 +94,7 @@ get_header();
 									<span><i class="fa-regular fa-calendar"></i> <?= esc_html( get_the_date( 'jS F Y' ) ); ?></span>
 									<span><i class="fa-regular fa-clock"></i> <?= wp_kses_post( estimate_reading_time_in_minutes( get_the_content() ) ); ?> minute read</span>
 								</div>
-								<div class="text-secondary-900"><?= esc_html( get_the_excerpt() ); ?></div>
+								<!-- <div class="text-secondary-900"><?= esc_html( get_the_excerpt() ); ?></div> -->
 							</div>
 						</a>
 					</div>
