@@ -17,9 +17,7 @@ get_header();
 	$cta_block = '';
 
 	if ( $post ) {
-		$content = apply_filters('the_content', $post->post_content);
-
-		// Check if lc-cta block exists and extract it.
+		// Check if lc-cta block exists and extract it before applying filters.
 		if ( has_block( 'acf/lc-cta', $post ) ) {
 			$blocks = parse_blocks( $post->post_content );
 			foreach ( $blocks as $block ) {
@@ -28,10 +26,11 @@ get_header();
 					break;
 				}
 			}
-			// Remove the CTA block from the main content.
-			$content = preg_replace('/<!-- wp:acf\/lc-cta.*?<!-- \/wp:acf\/lc-cta -->/s', '', $content);
+			// Remove the CTA block from the post content.
+			$post->post_content = preg_replace('/<!-- wp:acf\/lc-cta.*?<!-- \/wp:acf\/lc-cta -->/s', '', $post->post_content);
 		}
 
+		$content = apply_filters('the_content', $post->post_content);
 		echo $content;
 	}
 	?>
