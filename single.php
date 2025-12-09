@@ -11,30 +11,29 @@ get_header();
 <main id="main" class="blog">
 	<div class="container pt-4 pb-5">
 		<section class="breadcrumbs fs-ui mb-4">
-        <?php
-        if ( function_exists( 'yoast_breadcrumb' ) ) {
-            yoast_breadcrumb( '<div id="breadcrumbs" class="my-2">', '</div>' );
-        }
-        ?>
-	    </section>
+		<?php
+		if ( function_exists( 'yoast_breadcrumb' ) ) {
+			yoast_breadcrumb( '<div id="breadcrumbs" class="my-2">', '</div>' );
+		}
+		?>
+		</section>
 		<div class="row">
 			<div class="col-md-9">
 				<div class="post_hero">
 					<?= get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'blog_hero__image has-radius' ) ); ?>
 				</div>
-		        <h1 class="h2"><?= esc_html( get_the_title() ); ?></h1>
+				<h1 class="h2"><?= esc_html( get_the_title() ); ?></h1>
 				<?php
 				// phpcs:disable
 				// no read time at the moment as the articles are very short
 				// $count = estimate_reading_time_in_minutes(get_the_content(), 200, true, true) ?? null;
 				// if ($count) {
-				//     echo $count;
+				//	 echo $count;
 				// }
 				// phpcs:enable
 				?>
 				<div class="post_meta mb-4">
-					<span><i class="fa-regular fa-calendar"></i> <?= esc_html( get_the_date( 'jS F Y' ) ); ?></span>
-					<span><i class="fa-regular fa-clock"></i> <?= esc_html( estimate_reading_time_in_minutes( get_the_content() ) ); ?> minute read</span>
+					<?= esc_html( get_the_date( 'jS F Y' ) ); ?>
 				</div>
 				<?php
 				echo wp_kses_post( get_the_content() );
@@ -74,12 +73,12 @@ get_header();
 					<?php
 					if ( $prev ) {
 						?>
-					<a href="<?= esc_url( get_permalink( $prev ) ); ?>" class="btn btn--outline">← Previous</a>
+					<a href="<?= esc_url( get_permalink( $prev ) ); ?>" class="btn-rr btn-rr--reverse"><span>Previous</span></a>
 						<?php
 					}
 					if ( $next ) {
 						?>
-					<a href="<?= esc_url( get_permalink( $next ) ); ?>" class="btn btn--outline">Next →</a>
+					<a href="<?= esc_url( get_permalink( $next ) ); ?>" class="btn-rr"><span>Next</span></a>
 						<?php
 					}
 					?>
@@ -100,7 +99,7 @@ get_header();
 				if ( $q->have_posts() ) {
 					?>
 					<div class="sidebar">
-						<h2 class="h3">Latest News &amp; Advice</h2>
+						<h2 class="h3">Latest Posts</h2>
 						<?php
 						while ( $q->have_posts() ) {
 							$q->the_post();
@@ -130,8 +129,7 @@ get_header();
 								</div>
 								<div class="service-cards__content">
 									<div class="post_meta">
-										<span class="fs-ui"><i class="fa-regular fa-calendar"></i> <?= esc_html( get_the_date( 'jS F Y' ) ); ?></span>
-										<span class="fs-ui"><i class="fa-regular fa-clock"></i> <?= esc_html( estimate_reading_time_in_minutes( get_the_content() ) ); ?> minute read</span>
+										<span class="fs-ui"><?= esc_html( get_the_date( 'jS F Y' ) ); ?></span>
 									</div>
 									<h3 class="latest_posts__title service-cards__title h4"><?= esc_html( get_the_title() ); ?></h3>
 								</div>
@@ -148,7 +146,7 @@ get_header();
 				?>
 			</div>
 		</div>
-    </div>
+	</div>
 </main>
 <?php
 get_footer();

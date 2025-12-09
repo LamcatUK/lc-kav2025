@@ -22210,6 +22210,15 @@ figure {
   opacity: 1;
 }
 
+.btn-rr--reverse::after {
+  right: auto;
+  left: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23fff' d='M13 9V7h3v2h-3zM7.03233022 1l1.43859292 1.43076034-4.58011387 4.55637467H10v2.02471813H3.89080927l4.58011387 4.55637466L7.03233022 15 0 8l.71777145-.71538017.71878813-.71639202L7.03233022 1z'/%3E%3C/svg%3E");
+}
+.btn-rr--reverse:hover span {
+  transform: translateX(1rem);
+}
+
 header {
   background-color: var(--col-white);
   border-bottom: 1px solid var(--col-mid-grey);

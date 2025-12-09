@@ -19,11 +19,11 @@ get_header();
 	if ( $post ) {
 		// Check if lc-cta block exists and extract it before applying filters.
 		if ( has_block( 'acf/lc-cta', $post ) ) {
-			$blocks = parse_blocks( $post->post_content );
+			$blocks          = parse_blocks( $post->post_content );
 			$filtered_blocks = array();
 
 			foreach ( $blocks as $block ) {
-				if ( $block['blockName'] === 'acf/lc-cta' ) {
+				if ( 'acf/lc-cta' === $block['blockName'] ) {
 					$cta_block = render_block( $block );
 				} else {
 					$filtered_blocks[] = $block;
