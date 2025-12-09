@@ -68,31 +68,23 @@
     padding: 0.2rem 0.75rem;
     font-size: var(--fs-100);
     text-transform: uppercase;
-    letter-spacing: var(--ls-900);
-    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-100);
+    font-weight: var(--fw-medium);
     border-radius: 100vw;
   }
   &__inner {
     h3 {
       margin: 0;
-      font-size: var(--fs-400);
+      font-size: var(--fs-300);
       font-weight: var(--fw-medium);
       font-family: var(--ff-body);
     }
   }
   &__meta {
-    font-size: var(--text-sm);
-    color: var(--col-neutral-600);
+    font-size: var(--fs-100);
+    color: var(--col-mid-grey);
     display: flex;
     gap: 1rem;
     margin-top: 0.5rem;
-    span {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      i {
-        color: var(--col-accent-500);
-      }
-    }
   }
 }
