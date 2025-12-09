@@ -19,6 +19,23 @@ function acf_blocks() {
 
         acf_register_block_type(
             array(
+                'name'            => 'lc_yt_embed',
+                'title'           => __( 'LC YT Embed' ),
+                'category'        => 'layout',
+                'icon'            => 'cover-image',
+                'render_template' => 'blocks/lc-yt-embed.php',
+                'mode'            => 'preview',
+                'supports'        => array(
+                    'mode'      => true,
+                    'anchor'    => true,
+                    'className' => true,
+                    'align'     => true,
+                ),
+            )
+        );
+
+        acf_register_block_type(
+            array(
                 'name'            => 'lc_portfolio_grid',
                 'title'           => __( 'LC Portfolio Grid' ),
                 'category'        => 'layout',

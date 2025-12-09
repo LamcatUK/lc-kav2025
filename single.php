@@ -19,9 +19,19 @@ get_header();
 		</section>
 		<div class="row">
 			<div class="col-md-9">
+				<?php
+				// if the category is 'podcast' don't show the hero image
+				$categories = get_the_category();
+				$category_slugs = wp_list_pluck( $categories, 'slug' );
+				$is_podcast = in_array( 'podcast', $category_slugs, true );
+				if ( ! $is_podcast ) {
+					?>
 				<div class="post_hero">
 					<?= get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'blog_hero__image has-radius' ) ); ?>
 				</div>
+					<?php
+				}
+				?>
 				<h1 class="h2"><?= esc_html( get_the_title() ); ?></h1>
 				<?php
 				// phpcs:disable
@@ -36,7 +46,7 @@ get_header();
 					<?= esc_html( get_the_date( 'jS F Y' ) ); ?>
 				</div>
 				<?php
-				echo wp_kses_post( get_the_content() );
+				the_content();
 
 				/*
 				?>
