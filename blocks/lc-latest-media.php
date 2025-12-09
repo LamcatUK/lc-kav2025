@@ -10,7 +10,10 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <section class="latest-media">
 	<div class="container py-5">
-		<h2 class="text-center fs-600 text-white mb-4" data-aos="fade">Media</h2>
+		<div class="d-flex flex-wrap justify-content-between align-items-center">
+			<h2 class="fs-600 text-white mb-4" data-aos="fade">Media</h2>
+			<a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>" class="btn-rr" data-aos="fade" data-aos-delay="100">View All Media</a> 
+		</div>
 		<div class="row g-5">
 			<?php
 			$q = new WP_Query(
