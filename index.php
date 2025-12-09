@@ -13,21 +13,25 @@ get_header();
 ?>
 <main id="main">
 	<?php
-	$post = get_post($page_for_posts);
+	$post      = get_post($page_for_posts);
 	$cta_block = '';
 
 	if ( $post ) {
 		// Check if lc-cta block exists and extract it before applying filters.
 		if ( has_block( 'acf/lc-cta', $post ) ) {
 			$blocks = parse_blocks( $post->post_content );
+			$filtered_blocks = array();
+
 			foreach ( $blocks as $block ) {
 				if ( $block['blockName'] === 'acf/lc-cta' ) {
 					$cta_block = render_block( $block );
-					break;
+				} else {
+					$filtered_blocks[] = $block;
 				}
 			}
-			// Remove the CTA block from the post content.
-			$post->post_content = preg_replace('/<!-- wp:acf\/lc-cta.*?<!-- \/wp:acf\/lc-cta -->/s', '', $post->post_content);
+
+			// Rebuild content without the CTA block.
+			$post->post_content = serialize_blocks( $filtered_blocks );
 		}
 
 		$content = apply_filters('the_content', $post->post_content);
