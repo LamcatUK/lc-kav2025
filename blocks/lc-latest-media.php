@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 		<div class="d-flex flex-wrap justify-content-between align-items-center">
 			<h2 class="fs-600 text-white mb-4" data-aos="fade">Media</h2>
 			<div data-aos="fade-left" data-aos-delay="200">
-				<a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>" class="btn-rr">View All Media</a>
+				<a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>" class="btn-rr"><span>View All Media</span></a>
 			</div>
 		</div>
 		<div class="row g-5">
