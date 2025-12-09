@@ -22685,22 +22685,22 @@ header .logo {
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .latest-media__card-1 .latest-media__image {
-  aspect-ratio: 4/3;
+  aspect-ratio: 3/2;
 }
 .latest-media__card-2 .latest-media__image {
-  aspect-ratio: 16/9;
+  aspect-ratio: 3/2;
 }
 .latest-media__card-3 .latest-media__image {
-  aspect-ratio: 5/4;
+  aspect-ratio: 3/2;
 }
 .latest-media__card-4 .latest-media__image {
-  aspect-ratio: 21/9;
+  aspect-ratio: 3/2;
 }
 .latest-media__card-5 .latest-media__image {
-  aspect-ratio: 4/3;
+  aspect-ratio: 3/2;
 }
 .latest-media__card-6 .latest-media__image {
-  aspect-ratio: 1/1;
+  aspect-ratio: 3/2;
 }
 .latest-media__type {
   font-size: var(--fs-100);
