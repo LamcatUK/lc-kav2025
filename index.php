@@ -20,7 +20,7 @@ get_header();
 		echo $content;
 	}
 	?>
-	<section class="latest_posts mt-5">
+	<section class="latest-posts mt-5">
 		<div class="container pb-5">
 			<?php
 			// phpcs:disable
@@ -37,7 +37,7 @@ get_header();
                 ?>
                 <div class="row mb-4">
                     <div class="col-12">
-                        <div class="filter-buttons text-center">
+                        <div class="filter-buttons">
                             <button class="btn btn-outline-primary filter-btn active" data-filter="all">All</button>
                             <?php
 							foreach ( $all_categories as $category ) {
@@ -84,17 +84,16 @@ get_header();
 					}
 					?>
 					<div class="col-md-6 col-lg-4" data-aos="fade" data-aos-delay="<?= esc_attr( $d ); ?>" data-category="<?= esc_attr( $categories ); ?>">
-						<a href="<?= esc_url( get_permalink() ); ?>" class="latest-insights__item">
-							<div class="latest-insights__img-wrapper">
-								<?= get_the_post_thumbnail( get_the_ID(), 'large', array( 'class' => 'img-fluid mb-3' ) ); ?>
+						<a href="<?= esc_url( get_permalink() ); ?>" class="latest-posts__item">
+							<div class="latest-posts__img-wrapper">
+								<?= get_the_post_thumbnail( get_the_ID(), 'large', array( 'class' => 'latest-posts__image' ) ); ?>
+								<div class="latest-posts__pill"><?= esc_html( $first_category->name ); ?></div>
 							</div>
-							<div class="latest-insights__inner">
+							<div class="latest-posts__inner">
 								<h3><?= esc_html( get_the_title() ); ?></h3>
-								<div class="latest-insights__meta">
-									<span><i class="fa-regular fa-calendar"></i> <?= esc_html( get_the_date( 'jS F Y' ) ); ?></span>
-									<span><i class="fa-regular fa-clock"></i> <?= wp_kses_post( estimate_reading_time_in_minutes( get_the_content() ) ); ?> minute read</span>
+								<div class="latest-posts__meta">
+									<?= esc_html( get_the_date( 'jS F Y' ) ); ?>
 								</div>
-								<!-- <div class="text-secondary-900"><?= esc_html( get_the_excerpt() ); ?></div> -->
 							</div>
 						</a>
 					</div>
