@@ -14,9 +14,24 @@ get_header();
 <main id="main">
 	<?php
 	$post = get_post($page_for_posts);
+	$cta_block = '';
 
 	if ( $post ) {
 		$content = apply_filters('the_content', $post->post_content);
+
+		// Check if lc-cta block exists and extract it.
+		if ( has_block( 'acf/lc-cta', $post ) ) {
+			$blocks = parse_blocks( $post->post_content );
+			foreach ( $blocks as $block ) {
+				if ( $block['blockName'] === 'acf/lc-cta' ) {
+					$cta_block = render_block( $block );
+					break;
+				}
+			}
+			// Remove the CTA block from the main content.
+			$content = preg_replace('/<!-- wp:acf\/lc-cta.*?<!-- \/wp:acf\/lc-cta -->/s', '', $content);
+		}
+
 		echo $content;
 	}
 	?>
@@ -108,6 +123,12 @@ get_header();
 			</div>
 		</div>
 	</section>
+	<?php
+	// Output the CTA block if it was found.
+	if ( ! empty( $cta_block ) ) {
+		echo $cta_block;
+	}
+	?>
 </main>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
