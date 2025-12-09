@@ -24,9 +24,9 @@ function acf_blocks() {
                 'category'        => 'layout',
                 'icon'            => 'cover-image',
                 'render_template' => 'blocks/lc-yt-embed.php',
-                'mode'            => 'preview',
+                'mode'            => 'edit',
                 'supports'        => array(
-                    'mode'      => true,
+                    'mode'      => false,
                     'anchor'    => true,
                     'className' => true,
                     'align'     => true,
