@@ -35,3 +35,20 @@
     font-size: $h1-font-size;
     font-weight: $headings-font-weight;
 }
+
+// Center editor content properly
+.editor-styles-wrapper {
+  .wp-block {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .wp-block[data-align="wide"] {
+    max-width: 1320px;
+  }
+
+  .wp-block[data-align="full"] {
+    max-width: none;
+  }
+}

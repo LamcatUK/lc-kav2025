@@ -22548,7 +22548,7 @@ header .logo {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 3/2;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: center;
