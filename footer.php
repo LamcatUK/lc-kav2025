@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
     <div class="container">
         <div class="row pb-4 g-4">
 			<div class="col-sm-4">
-				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/kav-logo--wo.svg' ); ?>" alt="Kunal A Vyas" class="mb-4 d-block" width="175" height="112">
+				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/kunal-vyas-logo--web-wo.svg' ); ?>" alt="Kunal A Vyas" class="mb-4 d-block" width="175" height="112">
             </div>
             <div class="col-sm-4">
                 <?=

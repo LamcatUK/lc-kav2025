@@ -27,7 +27,7 @@ $l = get_field( 'cta_link' );
 				</div>
 			</div>
 			<div class="col-lg-4 text-center">
-				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/kav-logo--full.svg' ); ?>"
+				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/kunal-vyas-logo--web-full.svg' ); ?>"
 					alt="Kunal A. Vyas Logo"
 					class="img-fluid cta__logo"
 					width="200"
