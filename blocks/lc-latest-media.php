@@ -31,30 +31,31 @@ defined( 'ABSPATH' ) || exit;
 				while ( $q->have_posts() ) {
 					$q->the_post();
 					++$counter;
-					switch ( $counter ) {
-						case 1:
-							$col_class = 'col-md-4 col-lg-3 latest-media__card-1';
-							break;
-						case 2:
-							$col_class = 'col-md-8 col-lg-6 latest-media__card-2';
-							break;
-						case 3:
-							$col_class = 'col-md-8 col-lg-3 latest-media__card-3';
-							break;
-						case 4:
-							$col_class = 'col-md-4 col-lg-6 latest-media__card-4';
-							break;
-						case 5:
-							$col_class = 'col-md-6 col-lg-3 latest-media__card-5';
-							break;
-						case 6:
-							$col_class = 'col-md-6 col-lg-3 latest-media__card-6';
-							break;
-						default:
-							$col_class = 'col-md-6';
-							break;
-					}
+					// switch ( $counter ) {
+					// 	case 1:
+					// 		$col_class = 'col-md-4 col-lg-3 latest-media__card-1';
+					// 		break;
+					// 	case 2:
+					// 		$col_class = 'col-md-8 col-lg-6 latest-media__card-2';
+					// 		break;
+					// 	case 3:
+					// 		$col_class = 'col-md-8 col-lg-3 latest-media__card-3';
+					// 		break;
+					// 	case 4:
+					// 		$col_class = 'col-md-4 col-lg-6 latest-media__card-4';
+					// 		break;
+					// 	case 5:
+					// 		$col_class = 'col-md-6 col-lg-3 latest-media__card-5';
+					// 		break;
+					// 	case 6:
+					// 		$col_class = 'col-md-6 col-lg-3 latest-media__card-6';
+					// 		break;
+					// 	default:
+					// 		$col_class = 'col-md-6';
+					// 		break;
+					// 	}
 
+					$col_class = 'col-md-4';
 					?>
 			<div class="<?php echo esc_attr( $col_class ); ?>">			
 				<a href="<?php echo esc_url( get_permalink() ); ?>" class="latest-media__card" data-aos="fade-up" data-aos-delay="<?php echo esc_attr( $counter * 100 ); ?>">

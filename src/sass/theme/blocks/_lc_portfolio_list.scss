@@ -10,7 +10,7 @@
 
   
 }
-.portfoli-list__card,
+.portfolio-list__card,
 .portfolio-card {
   .portfolio-card__link {
     display: block;
@@ -22,15 +22,16 @@
   &__media {
     position: relative;
     width: 100%;
-    padding-top: 66.666%; /* 3:2 ratio */
+    aspect-ratio: 3 / 2;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    margin: auto;
+    width: 80%;
     aspect-ratio: 3 / 2;
     object-fit: cover;
     object-position: center;

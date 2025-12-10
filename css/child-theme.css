@@ -22222,11 +22222,11 @@ figure {
 header {
   background-color: var(--col-white);
   border-bottom: 1px solid var(--col-mid-grey);
-  height: var(--h-top);
+  height: calc(var(--h-top) + 0.25rem);
 }
 @media (min-width: 992px) {
   header {
-    height: var(--h-top-desktop);
+    height: calc(var(--h-top-desktop) + 1rem);
     transition: var(--transition);
   }
 }
@@ -22309,17 +22309,17 @@ header .logo {
   display: inline-block;
   max-width: 100%;
   padding-block: 0;
-  background-image: url(../img/kav-logo--nostrap.svg);
-  aspect-ratio: 80.21/37.73;
+  background-image: url(../img/kunal-vyas-logo--web-nostrap.svg);
+  aspect-ratio: 78.33/39.96;
   width: 80px;
   height: 38px;
 }
 @media (min-width: 1400px) {
   header .logo {
-    background-image: url(../img/kav-logo--full.svg);
-    aspect-ratio: 80.21/51.29;
-    width: 80px;
-    height: 52px;
+    background-image: url(../img/kunal-vyas-logo--web-full.svg);
+    aspect-ratio: 82.85/51.38;
+    width: 100px;
+    height: 68px;
   }
 }
 @media (max-width: 991px) {
@@ -22609,26 +22609,27 @@ header .logo {
   align-items: stretch;
 }
 
-.portfoli-list__card .portfolio-card__link,
+.portfolio-list__card .portfolio-card__link,
 .portfolio-card .portfolio-card__link {
   display: block;
   height: 100%;
   color: inherit;
   text-decoration: none;
 }
-.portfoli-list__card__media,
+.portfolio-list__card__media,
 .portfolio-card__media {
   position: relative;
   width: 100%;
-  padding-top: 66.666%; /* 3:2 ratio */
+  aspect-ratio: 3/2;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.portfoli-list__card__img,
+.portfolio-list__card__img,
 .portfolio-card__img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  margin: auto;
+  width: 80%;
   aspect-ratio: 3/2;
   -o-object-fit: cover;
   object-fit: cover;
@@ -22639,7 +22640,7 @@ header .logo {
   display: block;
   filter: grayscale(1);
 }
-.portfoli-list__card__overlay,
+.portfolio-list__card__overlay,
 .portfolio-card__overlay {
   position: absolute;
   inset: 0;
@@ -22653,22 +22654,22 @@ header .logo {
   opacity: 0;
   transition: opacity var(--transition);
 }
-.portfoli-list__card:hover .portfolio-card__img,
+.portfolio-list__card:hover .portfolio-card__img,
 .portfolio-card:hover .portfolio-card__img {
   transform: scale(1.05);
   opacity: 0.4;
 }
-.portfoli-list__card:hover .portfolio-card__overlay,
+.portfolio-list__card:hover .portfolio-card__overlay,
 .portfolio-card:hover .portfolio-card__overlay {
   opacity: 1;
 }
-.portfoli-list__card__title,
+.portfolio-list__card__title,
 .portfolio-card__title {
   margin: 0;
   font-size: 1rem;
   letter-spacing: 0.06em;
 }
-.portfoli-list__card__excerpt,
+.portfolio-list__card__excerpt,
 .portfolio-card__excerpt {
   margin-top: 0.5rem;
   font-size: 0.875rem;
@@ -22756,6 +22757,7 @@ header .logo {
 .latest-media__image-wrapper {
   overflow: hidden;
   margin-bottom: 0.75rem;
+  aspect-ratio: 3/2;
 }
 .latest-media__image {
   width: 100%;

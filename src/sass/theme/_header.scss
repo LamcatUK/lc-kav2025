@@ -1,10 +1,10 @@
 header {
   background-color: var(--col-white);
   border-bottom: 1px solid var(--col-mid-grey);
-  height: var(--h-top);
+  height: calc( var(--h-top) + 0.25rem );
 
   @media (min-width: 992px) {
-    height: var(--h-top-desktop);
+    height: calc( var(--h-top-desktop) + 1rem );
     transition: var(--transition);
   }
 
@@ -101,16 +101,18 @@ header {
     max-width: 100%;
     padding-block: 0;
 
-    background-image: url(../img/kav-logo--nostrap.svg);
-    aspect-ratio: 80.21 / 37.73;
+    background-image: url(../img/kunal-vyas-logo--web-nostrap.svg);
+    // aspect-ratio: 80.21 / 37.73;
+    aspect-ratio: 78.33 / 39.96;
     width: 80px;
     height: 38px;
 
     @media (min-width: 1400px) {
-      background-image: url(../img/kav-logo--full.svg);
-      aspect-ratio: 80.21 / 51.29;
-      width: 80px;
-      height: 52px;
+      background-image: url(../img/kunal-vyas-logo--web-full.svg);
+      // aspect-ratio: 80.21 / 51.29;
+      aspect-ratio: 82.85 / 51.38;
+      width: 100px;
+      height: 68px;
     }
   }
 
